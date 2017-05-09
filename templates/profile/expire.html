@@ -1,0 +1,57 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block main%}
+  <div class="row main more">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-users"></span>Expiring</div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m12 l11 ref-link">
+                  <p><strong>Your referral link is: </strong><span class="ref"> {{ request.scheme }}://www.btcplan.org/{{ ref }} </span> <span class="fa fa-copy link_btn_on"></span></p>
+                  <p><strong>Referral link to register page: </strong><span class="ref"> {{ request.scheme }}://www.btcplan.org/{{ ref }}/register</span> <span class="fa fa-copy link_btn_on"></span></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m12 l11 ref-table">
+                  <div class="btcard">
+                      <h4><p>Total Active: <span>{{ children.count }}</span></p> </h4>
+                      <div class="btcard-content">
+                          <div class="table">
+                              <div class="search-input col s12 m12 l9">
+                                  <input type="text" id="serach" placeholder="who do you want?">
+                                  <label for="search"><span class="fa fa-search"></span></label>
+                              </div>
+                              <table>
+                                  <tr>
+                                      <th>Name</th>
+                                      <th>Level</th>
+                                      <th>Refs Left</th>
+                                      <th>Time Left</th>
+                                  </tr>
+                                  {% for child in children  %}
+                                  <tr>
+                                      <td><a href="{% url 'profile:ext' name=child.downliner.username %}">{{ child.downliner.username }}</a></td>
+                                      <td>Level {{ child.downliner.dashboard.level }}</td>
+                                      <td>{{ child.downliner.dashboard.ref_left }}</td>
+                                      {% with future as child.downliner.dashboard.expire %}
+                                      {# {% daysleft future as dl%}#}
+                                      <td>{{ child.downliner.dashboard.daysleft }} day{{ child.downliner.dashboard.daysleft|pluralize }} </td>
+                                      {% endwith %}
+
+                                  </tr>
+                                  {% endfor %}
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  {% endblock %}
+  {% block extra-js %}
+   <script type="text/javascript" src="{% static 'js/clipboard.min.js' %}"></script>
+  {% endblock %}

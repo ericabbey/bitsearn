@@ -1,0 +1,306 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load query%}
+{% load lev %}
+{% load amt %}
+{% block main %}
+  <div class="row main">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-dashboard"></span>My Dashboard</div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m12 l12 rate"><p><span class="fa fa-btc"></span>1 =  <span class="fa fa-dollar"></span>1000</p></div>
+          </div>
+          <div class="row">
+              <div class="col s12 m6 l6">
+                <div class="btcard">
+                  <h4>User Summary</h4>
+                  <div class="btcard-content">
+                   <noscript>
+                      <div class="danger">
+                        Enable javascript, page won't work properly with it disabled
+                      </div>
+                    </noscript>
+                    <div class="btcard-img-head">
+                      <div class="btcard-img">
+                        <img src="{{ info.user_image.url }}" alt="">
+                      </div>
+                      <div class="btcard-name">
+                        <p>{{ profile.user.username|capfirst }}</p>
+                        <a href="{% url 'profile:settings' %}">
+                          <div>Edit Settings</div>
+                        </a>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="level-desc">
+                        <p>Level {{ profile.level }}</p>
+                        <a href="{% url 'profile:upgrade'%}">
+                          <div>Upgrade to Next Level</div>
+                        </a>
+                      </div>
+                      <div class="level u">
+                        <div class="inner-level u"></div>
+                      </div>
+                      <div class="table">
+                        <table>
+                          <tr>
+                            <td>Joined</td>
+                            <td>{{ profile.date_joined }}</td>
+                          </tr>
+                          <tr>
+                            <td>Last Login</td>
+                            <td>{{ profile.last_login }}</td>
+                          </tr>
+                          <tr>
+                            <td>Donations Sent</td>
+                            <td><span class="fa fa-btc"></span>{{ sent }}</td>
+                          </tr>
+                          <tr>
+                            <td>Donations Received</td>
+                            <td><span class="fa fa-btc"></span>{{ received }}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m6 l6">
+                <div class="btcard">
+                  <h4>Sponser Summary</h4>
+                  <div class="btcard-content">
+                    <div class="btcard-img-head">
+                      <div class="btcard-img">
+                      {% if s_option.show_pp %}
+                        <img src="{{ sponsor.user_image.url }}" alt="">
+                      {%else%}
+                        <img src="/media/user/default.jpg" alt="">
+                      {%endif%}
+                      </div>
+                      <div class="btcard-name">
+                        <p>{{ sponsor.user.username }}</p>
+                      </div>
+                    </div>
+                    <div class="table">
+                         <table>
+                         {% if s_option.allowemail %}
+                          <tr>
+                            <td><span class="fa fa-envelope soc em"></span></td>
+                            <td>{{ sponsor.user.email }}</td>
+                          </tr>
+                        {% else %}
+                            <tr>
+                              <td><span class="fa fa-envelope soc em"></span></td>
+                              <td>hidden</td>
+                            </tr>
+                          {% endif %}
+                          {% if s_option.show_num%}
+                            <tr>
+                              <td><span class="fa fa-phone soc tel"></span></td>
+                              <td>{{ profile.sponsor.dashboard.phoneNum }}</td>
+                            </tr>
+                          {% else %}
+                            <tr>
+                              <td><span class="fa fa-phone soc tel"></span></td>
+                              <td>hidden</td>
+                            </tr>
+                          {% endif %}
+                        {%if s_option.show_soc %}
+                            <tr>
+                              <td><span class="fa fa-facebook-square soc fb"></span></td>
+                              <td>
+                                {%if sponsor.fb_link %}
+                                  {{ sponsor.fb_link }}
+                                {% else%}
+                                  --
+                                {% endif%}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><span class="fa fa-twitter-square soc twi"></span></td>
+                              <td>
+                                {%if sponsor.twi_link %}
+                                  {{ sponsor.twi_link }}
+                                {% else%}
+                                  --
+                                {% endif%}
+                              </td>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><span class="fa fa-linkedin-square soc lin"></span></td>
+                              <td>
+                                {%if sponsor.lin_link %}
+                                  {{ sponsor.lin_link }}
+                                {% else%}
+                                  --
+                                {% endif%}
+                              </td>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><span class="fa fa-google-plus-square soc gg"></span></td>
+                              <td>
+                                {%if sponsor.gm_link %}
+                                  {{ sponsor.gm_link }}
+                                {% else%}
+                                  --
+                                {% endif%}
+                              </td>
+                              </td>
+                            </tr>
+                          </table>
+                        {% else %}
+                            <tr>
+                              <td><span class="fa fa-facebook-square soc fb"></span></td>
+                              <td>
+                                hidden
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><span class="fa fa-twitter-square soc twi"></span></td>
+                              <td>
+                                hidden
+                              </td>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><span class="fa fa-linkedin-square soc lin"></span></td>
+                              <td>
+                                hidden
+                              </td>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><span class="fa fa-google-plus-square soc gg"></span></td>
+                              <td>
+                                hidden
+                              </td>
+                              </td>
+                            </tr>
+                          {%endif%}
+                        </table>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12 Progress btcard">
+              <h4>Progress</h4>
+              <div class="btcard-content">
+                <div class="table lvl1">
+                  <table>
+                    <tr>
+                      <td>Level 1</td>
+                      <td>Max Referrals: 3</td>
+                      <td>Donations: 0.002</td>
+                      <td>Sent: 0.002</td>
+                      <td>Received: 0.006</td>
+                      <td>completed</td>
+                    </tr>
+                  </table>
+
+                  <div class="level s" data-count="{{l.lev1}}" data-amount="{{a.lev1}}" data-total="{% lev profile l=1 %}" data-tot="{% amt profile l=1 a=0.002 %}">
+                    <div class="inner-level">
+                      <div class="inn-level"></div>
+                      <div class="text">{{ l.lev1}}/{% lev profile l=1 %}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="table lvl2">
+                  <table>
+                    <tr>
+                      <td>Level 2</td>
+                      <td>Max Referrals: 9</td>
+                      <td>Donations: 0.004</td>
+                      <td>Sent: 0.004</td>
+                      <td>Received: 0.018</td>
+                      <td>completed</td>
+                    </tr>
+                  </table>
+                  <div class="level s" data-count="{{l.lev2}}" data-amount="{{a.lev2}}" data-total="{% lev profile l=2 %}" data-tot="0.027">
+                    <div class="inner-level">
+                      <div class="inn-level"></div>
+                      <div class="text">{{ l.lev2}}/{% lev profile l=2 %}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="table lvl3">
+                  <table>
+                    <tr>
+                      <td>Level 3</td>
+                      <td>Max Referrals: 27</td>
+                      <td>Donations: 0.015</td>
+                      <td>Sent: 0.015</td>
+                      <td>Received: 0.405</td>
+                      <td>completed</td>
+                    </tr>
+                  </table>
+                  <div class="level s"  data-count="{{l.lev3}}" data-amount="{{a.lev3}}" data-total="{% lev profile l=3 %}"  data-tot="0.54">
+                    <div class="inner-level" >
+                      <div class="inn-level"></div>
+                      <div class="text">{{ l.lev3}}/{% lev profile l=3 %}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="table lvl4">
+                  <table>
+                    <tr>
+                      <td>Level 4</td>
+                      <td>Max Referrals: 81</td>
+                      <td>Donations: 0.37</td>
+                      <td>Sent: 0.37</td>
+                      <td>Received: 29.97</td>
+                      <td>completed</td>
+                    </tr>
+                  </table>
+                  <div class="level s"  data-count="{{l.lev4}}" data-amount="{{a.lev4}}" data-total="{% lev profile l=4 %}"  data-tot="36.45">
+                    <div class="inner-level">
+                      <div class="inn-level"></div>
+                      <div class="text">{{ l.lev4}}/{% lev profile l=4 %}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="table lvl3">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}
+{% block extra-js %}
+  <script type="text/javascript">
+  var lev_wid = $('.level.u').width()
+    sub_lev = (({{ received }}/{{ total }})*lev_wid)
+    $('.inner-level.u').width(sub_lev)
+
+    //
+    $(document).ready(function() {
+      $('.lvl1, .lvl2, .lvl3, .lvl4').each(function(){
+        var level = $(this).children('.level.s');
+            count = level.data('count');
+            amount = level.data('amount')
+            count_t = level.data('total');
+            amount_t = level.data('tot');
+            width = level.width();
+            lev_count = level.children('.inner-level'),
+            lev_amount = lev_count.children('.inn-level')
+        count_wid = ((count/count_t)* width)
+        amount_wid = ((amount/amount_t)* width)
+        lev_count.animate({width: count_wid},1);
+        if (amount == 0){
+            lev_amount.animate({width: 0},1);
+        }
+        else {
+          lev_amount.animate({width: amount_wid},1);
+        }
+      })
+    });
+  </script>
+{% endblock %}

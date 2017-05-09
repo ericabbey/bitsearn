@@ -1,0 +1,113 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block extra_css %}
+{%load child %}
+  <link rel="stylesheet" href="{% static 'css/jquery.treeview.css' %}" />
+{% endblock %}
+{% block main%}
+  <div class="row main more">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-users"></span>My Referrals</div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m12 l11 ref-link">
+                <p><strong>Your referral link is: </strong><span class="ref"> https://www.btcplan.org/{{ ref }} </span> <span class="fa fa-copy link_btn_on"></span></p>
+                <p><strong>Referral link to register page: </strong><span class="ref"> https://www.btcplan.org/{{ ref }}/register </span> <span class="fa fa-copy link_btn_on"></span></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m12 l11 ref-table">
+                  <div class="btcard">
+                      <h4>Referrals in a tree view</h4>
+                      <div class="btcard-content">
+                        <div class="treeview">
+                          <div class="sidetree"></div>
+                          <ul id="tree" class="tree">
+                            <li>You
+                              <ul class="g1">
+                              {% for p in p1 %}
+                                <li>
+                                    <div class="treehead g1">
+                                      <span class="fa fa-user"></span>
+                                      &nbsp;&nbsp;&nbsp;<span>{{p.doner.username }}</span>--><span> Level {{ p.doner.dashboard.level }}</span>
+                                      <div class="treehead_detail">
+                                        <p>{{ p.doner.email }}</p>
+                                        <p>{{ p.doner.dashboard.phoneNum }}</p>
+                                      </div>
+                                    </div>
+                                  <ul class="g g2">
+                                  {% child tree p2=request.user p1=p.doner as child_two %}
+                                  {% for ch in child_two %}
+                                    <li>
+                                        <div class="treehead g2">
+                                          <span class="fa fa-user"></span>
+                                          &nbsp;&nbsp;&nbsp;<span>{{ ch.doner.username }}</span>--><span> Level {{ ch.doner.dashboard.level }}</span>
+                                          <div class="treehead_detail">
+                                            <p>{{ ch.doner.email }}</p>
+                                            <p>{{ ch.doner.dashboard.phoneNum}}</p>
+                                          </div>
+                                        </div>
+                                      <ul class="g g3">
+                                        {% child tree p3=request.user p2=p.doner p1=ch.doner as child_three %}
+                                        {% for gch in child_three %}
+                                        <li>
+                                           <div class="treehead g3">
+                                              <span class="fa fa-user"></span>
+                                              &nbsp;&nbsp;&nbsp;<span>{{ gch.doner.username }}</span>--><span> Level {{ gch.doner.dashboard.level }}</span>
+                                              <div class="treehead_detail">
+                                                <p>{{ gch.doner.email }}</p>
+                                                <p>{{ gch.doner.dashboard.phoneNum }}</p>
+                                              </div>
+                                            </div>
+                                          <ul class="g g4">
+                                            {% child tree p4=request.user p3=p.doner p2=ch.doner p1=gch.doner as child_four %}
+                                            {% for grch in child_four %}
+                                            <li>
+                                              <div class="treehead g4">
+                                                <span class="fa fa-user"></span>
+                                                &nbsp;&nbsp;&nbsp;<span>{{ grch.doner.username }}</span>--><span> Level {{ grch.doner.dashboard.level }}</span>
+                                                <div class="treehead_detail">
+                                                  <p>{{ grch.doner.email }}</p>
+                                                  <p>{{ grch.doner.dashboard.phoneNum }}</p>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            {% endfor %}
+                                          </ul>
+                                        </li>
+                                        {% endfor %}
+                                      </ul>
+                                    </li>
+                                    {% endfor %}
+                                  </ul>
+                                </li>
+                              {% endfor %}
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+     {% endblock %}
+     {% block extra-js %}
+      <script src="{% static 'js/jquery.cookie.js' %}" type="text/javascript"></script>
+      <script src="{% static 'js/jquery.treeview.js' %}" type="text/javascript"></script>
+      <script type="text/javascript" src="{% static 'js/clipboard.min.js' %}"></script>
+      <script type="text/javascript">
+          $(function() {
+            $("#tree").treeview({
+              collapsed: true,
+              animated: "medium",
+              control:"#sidetreecontrol",
+              persist: "location"
+            });
+          })
+      </script>
+     {% endblock %}

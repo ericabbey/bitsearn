@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>BitsGold</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static '/font/font-awesome-4.4.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="nav">
+
+  <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo logo"><span class="fa fa-btc">itsearn</span></a>
+          <a href="#" data-activates="mobile-demo" class="ham static mobile" ><div></div></a>
+          <ul class="right nav hide-on-med-and-down">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'hiw' %}">How it Works</a></li>
+            <li><a href="{% url 'terms' %}">Terms</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="{% url 'index' %}">Home</a></li>
+           <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'hiw' %}">How it Works</a></li>
+            <li><a href="{% url 'terms' %}">Terms</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="body static">
+      <div class="row">
+            <div class="col s12 m12 l6">
+                <h4>How do you us to improve the platform</h4>
+                  <div class="row forms">
+                    <form class="col s12" action="">
+                      <div class="row">
+                        <div class="input-field col s12">
+                        <select>
+                          <option value="" disabled selected>priority</option>
+                          <option value="1">low</option>
+                          <option value="2">medium</option>
+                          <option value="3">high</option>
+                        </select>
+                      </div>
+                      <noscript>
+                        <style>
+                          select{
+                            display: block;
+                          }
+                        </style>
+                      </noscript>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="subject" type="text" class="validate" placeholder="">
+                          <label for="subject" data-error="Please enter your subject." class="active">Age</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <textarea id="message1" class="materialize-textarea validate" length="120" placeholder="Enter your message "></textarea>
+                          <label for="message1" class="active">Message</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <button class="btn waves-effect waves-light left" type="submit" name="action">Submit
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+            </div>
+      </div>
+  </div>
+  <div class="row footer fixed">
+        <div class="col s12 m12 l8 offset-l2 footer__cont "><p>All rights reserved Bitsearn &copy; 2017</p></div>
+      </div>
+</body>
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+</html>

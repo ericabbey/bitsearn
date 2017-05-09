@@ -1,0 +1,365 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block main%}
+  <div class="row main">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-user"></span>My Profile</div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m6 l6">
+                  <div class="btcard" data-url="{% url 'profile:settings' %}">
+                      <h4>Personal info</h4>
+                      <div class="btcard-content">
+                        <noscript>
+                          <div class="danger">
+                            Enable javascript, page won't work properly with it disabled
+                          </div>
+                        </noscript>
+                          <div class="profile_pic">
+                            <h5>User Profile</h5>
+                            <div class="row">
+                              <div class="col s12 m6 l6">
+                                <div class="img">
+                                  <img id="image" src="{{ info.user_image.url }}" alt="">
+                                </div>
+                              </div>
+                              <div class="col s12 m6 l6">
+                                <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                                  <input id="profile_img" name="user_image" type="file" accept="image/*">
+                                  <label for="profile_img" class="pass-btn" style="cursor: pointer">
+                                    <div class="change_pp">Change Profile Picture</div>
+                                  </label>
+                                  <div>
+                                    <div type="submit" class="pass-btn ">
+                                      <input type="submit" value="save image">
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="table settings">
+                              <table>
+                                  <tr>
+                                      <td>Username</td>
+                                      <td><span  class="pass-value">{{profile.user.username}}</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td>Joined</td>
+                                      <td>{{ joined|date:"F jS,  Y" }}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Invited By</td>
+                                      <td class="alt-cont"><a href="{% url 'profile:ext' name=profile.sponsor.username %}">{{ profile.sponsor.username }}</a>
+                                        <div class="alt">{{ profile.sponsor.email }}</div>
+                                      </td>
+                                  </tr>
+                              </table>
+
+                          </div>
+                        <form action="" method="post">{% csrf_token %}
+                          <div class="change">
+                            <div>Change name?</div>
+                            <div>
+                              <div><input type="text" name="name" placeholder="{{ profile.name }}"></div>
+                              <div>
+                                <a href="#" class="pass-btn">
+                                  <input type="submit" value="save">
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="change">
+                            <div>Change email?</div>
+                            <div>
+                              <div><input type="text" name="email" placeholder="{{ profile.user.email }}"></div>
+                              <div>
+                                <a href="#" class="pass-btn">
+                                  <input type="submit" value="save">
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="change">
+                            <div>Change phone num?</div>
+                            <div>
+                              <div><input type="text" name="phone" placeholder="{{ profile.phoneNum }}"></div>
+                              <div>
+                                <a href="#" class="pass-btn">
+                                  <input type="submit" value="save">
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="change">
+                            <div>Change country?</div>
+                            <div>
+                              <div><input type="text" name="country" placeholder="{{ profile.country }}"></div>
+                              <div>
+                                <a href="#" class="pass-btn">
+                                  <input type="submit" value="save">
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </form>
+              <div class="col s12 m6 l6">
+                  <div class="btcard">
+                    <h4>Social</h4>
+                      <div class="btcard-content">
+                        <h5>Add social Network</h5>
+                        <div>
+                        <form action="" method="post">{% csrf_token %}
+                          <div class="social fb">
+                            <div><i class="fa fa-facebook"></i></div>
+                            <div><input type="text" name="fb" placeholder="{{info.fb_link}}"></div>
+                            <div>
+                              <div class="pass-btn">
+                                <input type="submit" value="save">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="social tw">
+                            <div><i class="fa fa-twitter"></i></div>
+                            <div><input type="text" name="tw" placeholder="{{info.twi_link}}"></div>
+                            <div>
+                              <a href="#" class="pass-btn">
+                                <input type="submit" value="save">
+                              </a>
+                            </div>
+                          </div>
+                          <div class="social gp">
+                            <div><i class="fa fa-google-plus"></i></div>
+                            <div><input type="text" name="gp" placeholder="{{info.gm_link}}"></div>
+                            <div>
+                              <a href="#" class="pass-btn">
+                                <input type="submit" value="save">
+                              </a>
+                            </div>
+                          </div>
+                          <div class="social in">
+                            <div><i class="fa fa-linkedin"></i></div>
+                            <div><input type="text" name="in" placeholder="{{info.lin_link}}"></div>
+                            <div>
+                              <a href="#" class="pass-btn">
+                                <input type="submit" value="save">
+                              </a>
+                            </div>
+                          </div>
+                        </form>
+                          <div class="divider"></div>
+                          <div class="toggle">
+                            <div>
+                              <p>Show social links</p>
+                              <p>Allow others to see my social links </p>
+                            </div>
+                            <div>
+                              <div class="checkbox-cont">
+                                <input type="checkbox" id="showsocial" class="showsocial" name="show_soc" {% if option.show_soc %} checked {% endif %} />
+                                <label for="showsocial">
+                                  <svg class="checkmark" width="56" height="56">
+                                    <path d="m25,36 l14,-16"
+                                          style="stroke-dasharray: 27px;"></path>
+                                    <path d="m25,36 l-8,-9"
+                                          style="stroke-dasharray: 11px;"></path>
+                                  </svg>
+                                  <svg class="cross" width="56" height="56">
+                                    <path d="m28,28 l-8,-8"
+                                          style="stroke-dasharray: 13px;"></path>
+                                    <path d="m28,28 l8,8"
+                                          style="stroke-dasharray: 13px;"></path>
+                                    <path d="m28,28 l-8,8"
+                                          style="stroke-dasharray: 13px;"></path>
+                                    <path d="m28,28 l8,-8"
+                                          style="stroke-dasharray: 13px;"></path>
+                                  </svg>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col s12 m6 l6">
+              <div class="btcard">
+                <h4>Security</h4>
+                <div class="btcard-content">
+                  {% if msg %}
+                  <div class="danger">
+                    <p>{{ msg }}</p>
+                  </div>
+                  {% endif %}
+                  <form action="" method="post">{% csrf_token %}
+                    <div class="change_extra">
+                      <div>Change your password?</div>
+                      <div>
+                        <div>
+                          <div><input type="password" name="old_password" placeholder="Old password"></div>
+                          <div><input type="password" name="password" placeholder="New password"></div>
+                          <div><input type="password" name="cpassword" placeholder="Confirm new password"></div>
+                        </div>
+                        <div>
+                          <a href="#" class="pass-btn">
+                            <input type="submit" value="save">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+                  </form>
+                  <!--<div class="change_extra">
+                    <div>Change your security answer?</div>
+                    <div>
+                      <div><input type="text" placeholder="Change answer"></div>
+                      <div>
+                        <a href="#" class="pass-btn">
+                          <div>Save</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider"></div>-->
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m6 l6">
+                              <div class="btcard">
+                <h4>Options</h4>
+                <div class="table option">
+                  <table>
+                    <tr>
+                      <td>
+                        <p>Autosave Settings</p>
+                        <p>Automatically save changes as you make them in settings</p>
+                      </td>
+                      <td>
+                        <div class="checkbox-cont">
+                        <input type="checkbox" id="autosave" name="autos" {% if option.autosave %} checked {% endif %}/>
+                        <label for="autosave">
+                          <svg class="checkmark" width="56" height="56">
+                            <path d="m25,36 l14,-16"
+                                  style="stroke-dasharray: 27px;"></path>
+                            <path d="m25,36 l-8,-9"
+                                  style="stroke-dasharray: 11px;"></path>
+                          </svg>
+                          <svg class="cross" width="56" height="56">
+                            <path d="m28,28 l-8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l-8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                          </svg>
+                        </label>
+                      </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Send Emails</p>
+                        <p>Allow BitGold to send you email when donations are  approved and submitted to you</p>
+                      </td>
+                      <td>
+                        <div class="checkbox-cont">
+                        <input type="checkbox" id="showemail" name="allowemail" {% if option.allowemail %} checked {% endif %}/>
+                        <label for="showemail">
+                          <svg class="checkmark" width="56" height="56">
+                            <path d="m25,36 l14,-16"
+                                  style="stroke-dasharray: 27px;"></path>
+                            <path d="m25,36 l-8,-9"
+                                  style="stroke-dasharray: 11px;"></path>
+                          </svg>
+                          <svg class="cross" width="56" height="56">
+                            <path d="m28,28 l-8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l-8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                          </svg>
+                        </label>
+                      </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Profile Picture</p>
+                        <p>Allow Others to see my Profile PIcture</p>
+                      </td>
+                      <td>
+                        <div class="checkbox-cont">
+                        <input type="checkbox" id="showpp" name="showpp" {% if option.show_pp %} checked {% endif %}/>
+                        <label for="showpp">
+                          <svg class="checkmark" width="56" height="56">
+                            <path d="m25,36 l14,-16"
+                                  style="stroke-dasharray: 27px;"></path>
+                            <path d="m25,36 l-8,-9"
+                                  style="stroke-dasharray: 11px;"></path>
+                          </svg>
+                          <svg class="cross" width="56" height="56">
+                            <path d="m28,28 l-8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l-8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                          </svg>
+                        </label>
+                      </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Show Number</p>
+                        <p>Allow Others to see my mobile number</p>
+                      </td>
+                      <td>
+                        <div class="checkbox-cont">
+                        <input type="checkbox" id="shownum" name="shownum" {% if option.show_num %} checked {% endif %}/>
+                        <label for="shownum">
+                          <svg class="checkmark" width="56" height="56">
+                            <path d="m25,36 l14,-16"
+                                  style="stroke-dasharray: 27px;"></path>
+                            <path d="m25,36 l-8,-9"
+                                  style="stroke-dasharray: 11px;"></path>
+                          </svg>
+                          <svg class="cross" width="56" height="56">
+                            <path d="m28,28 l-8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l-8,8"
+                                  style="stroke-dasharray: 13px;"></path>
+                            <path d="m28,28 l8,-8"
+                                  style="stroke-dasharray: 13px;"></path>
+                          </svg>
+                        </label>
+                      </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+ {% endblock %}
+ {% block extra-js %}
+    <script type="text/javascript" src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/settings.js'%}"></script>
+ {% endblock%}

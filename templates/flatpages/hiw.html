@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>BitsGold</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static '/font/font-awesome-4.4.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="nav">
+
+  <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo logo"><span class="fa fa-btc">itsearn</span></a>
+          <a href="#" data-activates="mobile-demo" class="ham static mobile" ><div></div></a>
+          <ul class="right nav hide-on-med-and-down">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li class="active"><a href="{% url 'hiw' %}">How it Works</a></li>
+            <li><a href="{% url 'terms' %}">Terms</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li class="active"><a href="{% url 'hiw' %}">How it Works</a></li>
+            <li><a href="{% url 'terms' %}">Terms</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="body static">
+      <div class="row">
+            <div class="col s12 m12 l10 offset-l1">
+                <h4>How it works</h4>
+                <p class="highlight azul">This is how the platform is achitechtured to get you near your goal</p>
+                <div class="col s12 m12 l7 strategy">
+                    <div class="lev1 lev">
+                        <h5>Level 1: pay your referer 0.002 Btc</h5>
+                        <p>Get 3 X 0.002 Btc = 0.006Btc - 0.002 Btc = 0.004 Btc profit </p>
+                    </div>
+                    <div class="lev2 lev">
+                        <h5>Level 2: pay your level 2 upliner 0.003 Btc</h5>
+                        <p>Get 9 X 0.003 Btc = 0.027Btc - 0.003 Btc = 0.024 Btc profit </p>
+                    </div>
+                    <div class="lev3 lev">
+                        <h5>Level 3: pay your level 3 upliner  0.02 Btc</h5>
+                        <p>Get 27 X 0.02 Btc = 0.54Btc - 0.02 Btc = 0.52 Btc profit </p>
+                    </div>
+                    <div class="lev4 lev">
+                        <h5>Level 4: pay your level 4 upliner 0.45 Btc</h5>
+                        <p>Get 81 X 0.45 Btc = 36.45Btc </p>
+                        <p style="color: #5a5a5a">No more upgrades after level 4</p>
+                    </div>
+                    <div>
+                        <p>You earn a profit of 36.45Btc. All money made goes to your bitcoin wallet.
+                        You can check the worth of your bitcoin from <a href="https://www.google.com">Google</a> or <a href="#">BtcCalculator</a></p>
+                    </div>
+                    <div>
+                        <p><strong>You can start a new cycle every 180 days</strong></p>
+                        <p><strong>You cant receive more than 37Btc after level 4 and send more than 0.475 Btc until your account is reset after 180days</strong></p>
+                    </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  <div class="row footer">
+    <div class="col s12 m12 l8 offset-l2 footer__cont "><p>All rights reserved Bitsearn &copy; 2017</p></div>
+  </div>
+</body>
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+</html>

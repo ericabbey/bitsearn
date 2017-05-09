@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>BitsGold</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'font/font-awesome-4.4.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% block extra_css %}
+    {% endblock %}
+</head>
+<body>
+  <div class="nav">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo center"><span class="fa fa-btc">itsearn</span></a>
+          <a href="#" class="left ham" ><div></div></a>
+          <a href="" class="left hamburger" ><div></div></a>
+          <a href="#!" class="bell" ><i class="fa fa-bell"></i>{% if notification > 0 %}<div></div>{% endif %}
+              <ul>
+                {% for a in actions %}
+                {% if 'refered' in a.verb %}
+                    <li><div><i class="fa fa-plus-square"></i><p>Downliner <b>{{a.user }}</b> made new referral</p></div></li>
+                {% endif %}
+                {% if 'upgrade' in a.verb %}
+                    <li><div><i class="fa fa-long-arrow-up upgrade"></i><p>Downliner <b>{{a.user }}</b> upgraded to {{ a.additional }}</p></div></li>
+                {% endif %}
+                {% if 'message' in a.verb %}
+                    <li><div><i class="fa fa-envelope admin"></i><p>We have passed 10000 active users hooray!!</p></div></li>
+                {% endif %}
+                {% if 'expire' in a.verb%}
+                    <li><div><i class="fa fa-times-circle expire"></i><p>Your downliner {{a.user }}'s account is expring in 2 days</p></div></li>
+                {% endif %}
+                {% if 'trophy' in a.verb %}
+                    <li><div><i class="fa fa-trophy completed"></i><p>Your downliner {{a.user }} Completed all Levels</p></div></li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+          </a>
+        </div>
+      </nav>
+  </div>
+  <div class="body">
+      <div class="sidebar mid mob">
+      <nav>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li class="profile">
+                <div class="profile-pic">
+                    <img src="{{ info.user_image.url }}" alt="">
+                </div>
+                <p>{{ profile.user.username|capfirst }}</p>
+            </li>
+            <li><a href="{% url 'profile:index'%}"><span class="fa fa-dashboard"> </span> <span>Dashboard</span></a></li>
+            <li><a href="{% url 'profile:settings' %}"><span class="fa fa-user"> </span> <span>Profle</span></a></li>
+            <li>
+              <div class="collapsible-header"><span class="fa fa-sitemap"> </span> <span>My Referrals </span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-angle-right right"></span></div>
+              <div class="collapsible-body">
+                  <ul>
+                      <li><a href="{% url 'profile:geneo' %}">Geneology</a></li>
+                      <li><a href="{% url 'profile:tree' %}">Tree View</a></li>
+                      <li><a href="{% url 'profile:expire' %}">Expiring</a></li>
+                  </ul>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><span class="fa fa-bitcoin"> </span> <span>Financial</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-angle-right right"></span></div>
+                <div class="collapsible-body"><ul>
+                      <li><a href="{% url 'profile:wallet' %}">Bitcoin Wallet</a></li>
+                      <li><a href="{% url 'profile:upgrade' %}">Upgrade</a></li>
+                      <li><a href="{% url 'profile:stats' %}">Stats</a></li>
+                  </ul>
+                </div>
+            </li>
+            <li><a href="{% url 'profile:testiment' %}"><span class="fa fa-comments-o"> </span> <span>Add Testimonial</span></a></li>
+            <li><a href="{% url 'profile:support' %}"><span class="fa fa-windows"> </span> <span>Support</span></a></li>
+            <li><a href="{% url 'profile:news' %}"><span class="fa fa-newspaper-o"> </span> <span>News</span></a></li>
+          </ul>
+          <div class="sidebar-footer">
+          <ul>
+              <li><a href="{% url 'profile:settings' %}"><span class="fa fa-gear"></span></a></li>
+              <li><a href="{% url 'logout' %}"><span class="fa fa-power-off"></span></a></li>
+              <li><a href="#top"><span class="fa fa-angle-double-up"></span></a></li>
+          </ul>
+      </div>
+      </nav>
+  </div>
+  {% block main %}
+
+  {% endblock %}
+  </div>
+</body>
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+    {% block extra-js %}{% endblock %}
+</html>

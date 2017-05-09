@@ -1,0 +1,53 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block main%}
+  <div class="row main">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-comment"></span>Support</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l10">
+                <div class="btcard testiment">
+                    <h4>How do you us to improve the platform</h4>
+                    <div class="btcard-content">
+                        <form class="" action="" method="post">{% csrf_token %}
+                          <div class="col s12 m12 l10">
+                              <div class="inp">
+                                  <select class="priority" name="priority">
+                                    <option value="" disabled selected>Choose your priority</option>
+                                    <option value="L">Low</option>
+                                    <option value="M">Medium</option>
+                                    <option value="H">High</option>
+                                  </select>
+                              </div>
+                              <noscript>
+                                <style>
+                                  select{
+                                    display: block;
+                                  }
+                                </style>
+                              </noscript>
+                              <div style="margin-top: 15px" class="inp">
+                                  <label for="">Subject</label>
+                                  <input type="text" name="subj" placeholder="">
+                              </div>
+                              <div class="inp">
+                                  <label for="">Message</label>
+                                 <textarea name="msg" id="" cols="30" rows="10" placeholder="" class="materialize-textarea" ></textarea>
+                              </div>
+                              <div class="inp">
+                                <div class="pass-btn">
+                                  <input type="submit" value="Submit">
+                                </div>
+                              </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

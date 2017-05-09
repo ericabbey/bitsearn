@@ -1,0 +1,1061 @@
+.body
+    display: flex
+    .main
+        width: calc(100% - 230px)
+        .rate
+            text-align: center
+            color: rgba(224, 208, 120, 0.8)
+            font:
+                size: 55px
+                weight: bold
+.breadcrumbs
+    margin-top: 20px
+    div
+        font-size: 40px
+        color: #dddddd
+.btcard
+    margin: 5px
+    border: 1px solid #dddddd
+    color: gray
+    padding: 5px
+    border-radius: 2px
+    background-color: white
+    box-shadow: -1px -1px 5px silver
+    h4
+        font-size: 27px
+        margin: 20px
+        padding-bottom: 10px
+        border-bottom: 1px solid #dddddd
+    .btcard-content
+        h5
+            font-size: 20px
+            margin: 20px
+            padding-bottom: 10px
+        .btcard-img-head
+            width: 50%
+            margin: 0 auto
+            display: flex
+            justify-content: space-around
+            .btcard-img
+                +size(70px)
+                border-radius: 50%
+                overflow: hidden
+                img
+                    width: 100%
+            .btcard-name
+                font-weight: bold
+                p
+                    margin: 5px 0px
+                a
+                    color: #19a29e
+                    div
+                        border-bottom: 1px solid #19a29e
+.level-desc
+    display: flex
+    justify-content: space-around
+    p,a
+        display: inline-block
+        margin: 10px 0
+    a
+        background: #19a29e
+        padding: 2px 7px
+        color: white
+        border-radius: 3px
+.level
+    width: 90%
+    height: 17px
+    background-color: silver
+    margin: 0 auto
+    border-radius: 2px
+    .inner-level
+        width: 20%
+        height: 100%
+        background: #ec763e
+.soc
+    font-size: 20px
+    margin-left: 20px
+.em
+    color: darkkhaki
+.tel
+    color: #5ab55a
+.fb
+    color: #4363c7
+.twi
+    color: #5fe8e4
+.lin
+    color: #0089ec
+.gg
+    color: #f74747
+.table
+    padding: 20px
+.level.s
+    height: 21px
+    background-color: #dcdcdc
+    div
+        height: 21px
+.lvl1
+    .level
+        position: relative
+        .inner-level
+            width: 10%
+            background: rgb(186, 251, 239)
+            .inn-level
+                background: #3eeccc
+            .text
+                position: absolute
+                text-align: center
+                color: white
+                width: 100%
+                height: 22px
+                top: -1px
+                z-index: 10
+                line-height: 20px
+.lvl2
+    .level
+        position: relative
+        .inner-level
+            width: 100%
+            background: #9bf5b3
+            .inn-level
+                background: #3eec6c
+            .text
+                position: absolute
+                text-align: center
+                color: white
+                width: 100%
+                height: 17px
+                top: 1px
+                z-index: 10
+                line-height: 20px
+.lvl3
+    .level
+        position: relative
+        .inner-level
+            width: 100%
+            background: #e1f2aa
+            .inn-level
+                background: #c1ec3e
+            .text
+                position: absolute
+                text-align: center
+                color: white
+                width: 100%
+                height: 17px
+                top: 1px
+                z-index: 10
+                line-height: 20px
+.lvl4
+    .level
+        position: relative
+        .inner-level
+            width: 100%
+            background: #d6d4c2
+            .inn-level
+                background: darkkhaki
+            .text
+                position: absolute
+                text-align: center
+                color: white
+                width: 100%
+                height: 17px
+                top: 1px
+                z-index: 10
+                line-height: 20px
+.alt-cont
+    position: relative
+    .alt
+        position: absolute
+        left: 20px
+        border: 1px solid #dddddd
+        padding: 2px
+        border-radius: 3px
+        background-color: rgba(67, 72, 107, .4)
+        color: ghostwhite
+        transition: all .5s ease
+        opacity: 0
+        &:hover
+            opacity: 1
+a
+    cursor: pointer
+a:hover + .alt
+    opacity: 1
+.profile_pic
+    margin-left: 50px
+    .img
+        +size(80px)
+        overflow: hidden
+        border-radius: 50%
+        img
+            width: 100%
+input[type="file"]
+    display: none
+.pass-btn
+    div, input[type=submit]
+        background-color:  #40a9f4
+        display: inline-block
+        color: white
+        padding: 3px 5px
+        margin-top: 20px
+        border-radius: 3px
+        border: 0
+.settings
+    table
+        tr
+            span.fa
+                cursor: pointer
+        tr.edit.hidden
+            display: none
+        tr.edit
+            height: 70px
+            border-bottom: 1px solid rgba(255, 69, 0, 0.17)
+            td
+                input
+                    height: 2rem
+                input:focus
+                    border-bottom: 1px solid #ff8d00
+                    box-shadow: 0 1px 0 0 #ff8d00
+            .pass-btn
+                div
+                    background-color: #ff8d00
+                    margin-top: 0
+                    cursor: pointer
+.option
+    table
+        tr
+            td:first-child
+                max-width: 500px
+            td
+                p
+                    margin: 2px
+                p:first-child
+                    font:
+                        weight: bold
+.sec-main
+    padding-bottom: 20px !important
+    border-bottom: 1px solid  #dddddd
+    a
+        margin-left: 47%
+    .sec-head
+        color: gray
+        font-size: 17px
+        border-bottom: 1px solid #e8e8e8
+        display: inline-block
+    .sec
+        display: flex
+        .sec-info
+            margin-top: 19px
+            display: inline-block
+            font-size: 19px
+            color: silver
+        .sec-info.top
+            margin-top: 0px
+        .sec-content
+            display: inline-block
+            input
+                &:focus
+                    border-bottom: 1px solid #40a9f4
+                    box-shadow: 0 1px 0 0 #40a9f4
+
+.checkbox-cont
+    width: 70px
+    height: 34px
+    position: relative
+    border-radius: 60px
+    background: #dddddd
+    label
+        position: absolute
+        left: 32px
+        top: 2px
+        width: 30px
+        height: 30px
+        border-radius: 28px
+        background: #b6c2c9
+        transition: .2s
+        cursor: pointer
+        svg
+            position: absolute
+            top: -13px
+            left: -9px
+            pointer-events: none
+            path
+                stroke: #fff
+                stroke-linecap: round
+                stroke-width: 4
+                -webkit-transition: opacity 0.1s
+                transition: opacity 0.1s
+                fill: none
+                -webkit-transition: stroke-dashoffset 0.2s
+                transition: stroke-dashoffset 0.2s
+    .checkmark
+        path
+            opacity: 0
+            &:first-child
+                stroke-dashoffset: 10px !important
+            &:last-child
+                stroke-dashoffset: 2px !important
+    .cross
+        path
+            stroke-dasharray: 8px !important
+            opacity: 1
+            stroke-dashoffset: 0px
+    input[type=checkbox]
+        display: none
+    input[type=checkbox]
+        &:checked + label
+            left: 3px
+            background: #ff8d00
+            &:before
+                display: none
+    input[type=checkbox]+label
+        &:before
+            display: none
+    input[type=checkbox]
+        &:checked + label
+            .checkmark
+                path
+                    opacity: 1
+                    stroke-dashoffset: 0px
+    input[type=checkbox]
+        &:checked + label
+            .cross
+                path
+                    opacity: 0
+                    stroke-dashoffset: 13px
+.ref-link
+    background-color: blanchedalmond
+    border-radius: 3px
+    position: relative
+    p
+        color: #0089ec
+        margin: 4px
+        margin-top: 7px
+        font-size: 17px
+    strong
+        font:
+            weight: bold
+    span
+        cursor: pointer
+
+    .ref-info.disable
+        opacity: 0
+    .ref-info
+        position: absolute
+        background-color: rgba(0, 0, 0, .4)
+        color: white
+        padding: 10px 20px
+        border-radius: 20px
+        left: 40%
+        opacity: 1
+        +transition()
+
+.ref-table
+    h4
+        display: flex
+        p
+            margin-right: 30px
+        span
+            font-weight: bold
+.search-input
+    position: relative
+    input
+        height: 2.5rem
+        border: 1px solid #dddddd
+        padding: 2px 55px
+        border-radius: 3px
+    input[type=text]:focus:not([readonly])
+        border-bottom: 1px solid #ff8d00
+        box-shadow: 0 1px 0 0 #ff8d00
+    input:focus + label
+        color: #ff8d00 !important
+    label
+        position: absolute
+        top: 8px
+        left: 30px
+        font-size: 20px
+.wallet
+    .btcard
+        position: relative
+        .btcard-content
+            h5
+                padding-left: 20px
+                color: skyblue
+                width: 100%
+        .button
+            width: 100px
+            padding: 4px 8px
+            border-radius: 3px
+            color: ghostwhite
+            cursor: pointer
+            border: none
+.upgrade
+    h4
+        font-size: 24px
+.danger
+    background-color: rgba(255, 0, 0, 0.1)
+    padding: 3px
+    color: #ff2d2d
+    border-radius: 3px
+    border: 2px dotted rgba(255, 0, 0, .7)
+    h5
+        color: #ff2d2d !important
+        font-size: 22px
+    p
+        margin: 4px
+        font-size: 14px
+.live
+    background-color: rgba(0, 137, 236, 0.2)
+    padding: 10px
+    color: rgba(0, 137, 236, 1)
+    border-radius: 3px
+    border: 2px dotted rgba(0, 137, 236, 0.7)
+    li
+        margin: 7px 0
+    p
+        margin: 0
+    h5
+        font-size: 20px
+.text-danger
+    color: darken(orange, 5%)
+    font:
+        size: 20px
+        weight: bold
+
+strong
+    font-weight: bold
+.qr
+    width: 230px
+    margin: 0 auto
+    img
+        width: 100%
+.notice
+    background-color: ghostwhite
+    border-radius: 3px
+    width: 200px
+    height: 27px
+    [type="checkbox"]+label
+        padding-left: 25px
+        border-right: 1px solid silver
+        margin-left: 5px
+    span
+        color: gray
+        line-height: 20px
+        position: relative
+        top: -5px
+    .checkmark, .cross
+        display: none
+.inp
+    margin-top: 30px
+    height: 50px
+    label
+        padding-left: 10px
+        width: 90%
+        padding-bottom: 10px
+    input,textarea
+        height: 2rem
+        margin: 0
+        border: 1px solid rgba(64, 169, 244, 0.28)
+        border-radius: 3px
+        padding-left: 10px
+        box-sizing: border-box
+        &:focus
+            border-bottom: 1px solid rgba(0, 137, 236, 1) !important
+            box-shadow: 0 1px 0 0 rgba(0, 137, 236, 1) !important
+.sub
+    margin-top: 10px
+
+.live-btn
+    background-color: rgba(0, 137, 236, 1)
+    border: none
+    color: ghostwhite
+    padding: 4px 8px
+.medium
+    font-size: 22px
+.tabs
+    .indicator
+        background-color: slategray
+    .tab
+        a
+            color: slategray
+            font-size: 20px
+            &:hover, &.active
+                background-color: transparent
+                color: slategray
+.long-text
+    max-width: 100px
+    text-overflow: ellipsis
+    overflow: hidden
+    p
+        width: 100%
+        text-overflow: ellipsis
+        overflow: hidden
+.info
+    background-color: rgba(255, 141, 0, 0.15)
+    padding: 10px
+    color: rgba(255, 141, 0, 1)
+    border-radius: 3px
+    border: 2px dotted rgba(255, 141, 0, 0.7)
+    li
+        margin: 7px 0px
+    p
+        margin: 0
+    h5
+        font-size: 20px
+.success_btn
+    background-color: #0fc70f
+    border: none
+    color: ghostwhite
+    padding: 4px 8px
+    border-radius: 3px
+    display: inline-block
+.testiment
+    h4
+        display: inline-block
+.line
+    position: relative
+    margin-top: 20px
+    border-bottom: 1px solid #eeeeee
+    .img
+        display: inline-block
+        +size(70px)
+        overflow: hidden
+        border-radius: 50%
+        margin-left: 20px
+        img
+            width: 100%
+.line-content
+    width: 76%
+    position: relative
+    display: inline-block
+    top: -20px
+    left: 50px
+    border: 1px solid #dddddd
+    border-radius: 3px
+    strong
+        margin: 0 5px 0 5px
+    em
+        position: absolute
+        right: 10px
+    div
+        p
+            margin: 4px
+    &:after
+        border-bottom: 2px dotted silver
+        content: ""
+        width: 45px
+        position: absolute
+        left: -50px
+        top: 27px
+.textarea
+    border: none
+    border-bottom: 2px solid #dddddd
+    &:focus
+        outline: 0
+        border-bottom: 2px solid #5fa6ff
+
+.testiment
+    .btcard-content
+        min-height: 300px
+.dropdown-content
+    li>span
+        color: rgba(0, 137, 236, 1) !important
+.select-dropdown
+    li
+        &.disabled>span
+            color: silver!important
+.select-wrapper
+    input.select-dropdown
+        border: 1px solid #dddddd
+        padding-left: 10px
+
+.p-head
+    display: flex
+    justify-content: space-around
+    border-bottom: 1px solid #dddddd
+    width: 80%
+    padding: 10px
+    .big-picture
+        +size(200px)
+        overflow: hidden
+        border-radius: 50%
+        img
+            width: 100%
+    .p-info
+        p:first-child
+            font:
+                size: 35px
+                weight: bold
+            border-bottom: 1px solid #dddddd
+            margin: 25px 0
+        p
+            font:
+                size: 20px
+            margin: 5px 0
+.hide
+    display: none !important
+.step-content, .tree
+    position: relative
+.tree-content
+    padding: 5px
+.treehead
+    p
+        margin: 3px
+    margin-bottom: 10px
+    .treehead_detail
+        margin-left: 25px
+.treehead.g1
+    .fa-user
+        color: #3eeccc
+    .treehead_detail
+        background-color: rgba(62, 236, 204, 0.30)
+        width: 300px
+        border-radius: 3px
+.treehead.g2
+    .fa-user
+        color: #3eec6c
+.treehead.g3
+    .fa-user
+        color: #c1ec3e
+.treehead.g4
+    .fa-user
+        color: darkkhaki
+.g
+    margin-left: 20px !important
+.g2
+    .treehead
+        margin-left: 0px !important
+        .treehead_detail
+            background-color: rgba(62, 236, 108, 0.30)
+            width: 300px
+            border-radius: 3px
+.g3
+    .treehead
+        margin-left: 0px !important
+        .treehead_detail
+            background-color: rgba(193, 236, 62, 0.30)
+            width: 300px
+            border-radius: 3px
+.g4
+    .treehead
+        margin-left: 0px !important
+        .treehead_detail
+            background-color: rgba(189, 183, 107, 0.30)
+            width: 300px
+            border-radius: 3px
+
+/***************************** STATIC PAGES ****************************************/
+.logo
+    margin-left: 20px
+
+.nav
+    li
+        height: 56px
+        a
+            height: 100%
+    li.active
+        a
+            background-color: rgba(0,0,0,0.1)
+#sidenav-overlay
+    z-index: 397
+.ham.mobile
+    margin: 0px
+    position: relative
+    top: 25px
+    left: 10px
+    div,div:after,div:before
+        background-color: white
+    div:before
+        top: -6px
+    div:after
+        top: 6px
+.bell
+    margin: 0 0 -10px 80px
+    font-size: 20px
+    color: rgba(255, 255, 255, .9)
+    position: relative
+    left: 20px
+    &>div
+        position: absolute
+        top: 0
+        left: 10px
+        border-radius: 50%
+        +size(10px)
+        background-color: #3eeccc
+    ul
+        position: absolute
+        background-color: rgba(255, 255, 255, .9)
+        z-index: 101
+        left: -80px
+        width: 200px
+        border-radius: 3px
+        opacity: 0
+        top: -20px
+        +transition(all .2s ease-in-out)
+        &:before
+            content: ''
+            width: 0
+            height: 0
+            border-left: 10px solid transparent
+            border-right: 10px solid transparent
+            border-bottom: 10px solid rgba(255, 255, 255, .9)
+            position: absolute
+            top: -10px
+            left: 40%
+            z-index: 100
+
+        &.active
+            opacity: 1
+            width: 200px
+            right: 0
+            top: 50px
+            z-index: 102
+            &:before
+                z-index: 102
+        li
+            color: grey
+            height: auto
+            overflow: hidden
+            &:last-child
+                div
+                    border-bottom: none
+            div
+                font-size: 15px
+                display: flex
+                height: auto
+                padding: 5px
+                box-sizing: border-box
+                border-bottom: 1px dashed rgba(192, 192, 192, 0.33)
+
+            p
+                margin: 0
+                line-height: 20px
+                padding-left: 10px
+                color: #949494
+                font-size: 14px
+            i
+                height: 20px
+                line-height: 20px
+                color: orange
+            i.upgrade
+                color: #14eaa2
+            i.admin
+                color: #4ba8ff
+            i.expire
+                color: #f24646
+            i.completed
+                color: #d8de47
+.btc-cont
+    height: 200px
+    overflow: hidden
+    .btc
+        position: relative
+        &.ex-big
+            font-size: 300px
+            transform: rotateZ(-45deg)
+        &.med-big
+            font-size: 120px
+            transform: rotateZ(130deg)
+        &.big
+            font-size: 170px
+            transform: rotateZ(-18deg)
+        &.small
+            font-size: 50px
+            transform: rotateZ(12deg)
+        &.ex-small
+            font-size: 20px
+            transform: rotateZ(12deg)
+        &.top-200
+            top: -200px
+        &.top-120
+            top: -120px
+        &.top-190
+            top: -190px
+            left: 100px
+        &.top-100
+            top: -100px
+            left: 400px
+        &.top-80
+            top: -80px
+            transform: rotateZ(180deg)
+        &.top-20
+            left: -200px
+        &.left-100
+            left: -100px
+        &.left-200
+            left: 200px
+        &.turn-180
+            transform: rotateZ(-90deg)
+        &.turn-60
+            transform: rotateZ(60deg)
+.home-info
+    font-size: 22px
+    color: gray
+    padding: 10px
+.naranja
+    color: orange !important
+.azul
+    color: #43a5ec !important
+.berday
+    color: #30b936 !important
+.amarillo
+    color: darkkhaki
+.ind-section
+    border-bottom:  1px solid #dedede
+    height: 255px
+    .ind-section-sub
+        +position(relative, 45% 0 0 0)
+        text-align: center
+        color: #a2a2a2
+.home-reg
+    text-align: center
+    border-bottom:  none
+    padding: 50px 0
+    .home-icon
+        font-size: 130px
+        margin: 20px 0 0 0
+    .home-text
+        font-size: 22px
+        margin: 10px 0
+.stats__cont
+    position: relative
+    margin-bottom: 0 !important
+    &__overlay
+        position: absolute
+        +size(100%)
+        background: rgba(74, 88, 159, 0.08)
+.stats
+    color: #5262b1
+    position: relative
+    h3
+        font:
+            size: 5rem
+            weight: bold
+        text-align: center
+    h5
+        font:
+            size: 3rem
+            weight: normal
+        text-align: left
+    h6
+        font:
+            size: 1.5rem
+            weight: normal
+        text-align: right
+.footer
+    background-color: slategray
+    height: 50px
+    margin-bottom: 0 !important
+    text-align: center
+    color: white
+    &__cont
+        height: 100%
+.footer.fixed
+    width: 100%
+    position: fixed
+    bottom: 0
+    z-index: 10
+.form
+    width: 100%
+.body.static
+    display: block
+.inp.log
+    input
+        padding: 2px 10px
+.live_btn
+    input
+        background-color: #43a5ec
+        border: none
+        padding: 5px 10px
+        color: ghostwhite
+        position: relative
+        top: 20px
+.form.static
+    form
+        div
+            .inp.log
+                label
+                    padding-left: 0
+                    font-size: 15px
+.static
+    h4
+        color: gray
+.highlight
+    font-size: 20px
+.strategy
+    .lev
+        margin: 10px
+        padding: 10px
+        h5
+            color: #888888
+        p
+            color: #ea484f
+            font-weight: bold
+.lev1
+    background-color: rgba(62, 236, 204, 0.65)
+.lev2
+    background-color: rgba(62, 236, 108, 0.65)
+.lev3
+    background-color: rgba(193, 236, 62, 0.65)
+.lev4
+    background-color: rgba(189, 183, 107, 0.65)
+
+.double
+    .double-child
+        padding: 0
+.forms
+    form
+        .input-field
+            label
+                font-size: 15px !important
+            input
+                border-radius: 3px
+                border: 1px solid #dddddd
+                padding-left: 10px
+                height: 2.5rem
+                margin: 0 0 1px 0
+                &:focus
+                    border-bottom: 1px solid #40a9f4
+                    box-shadow: 0 1px 0 0 #40a9f4
+                    & ~ label
+                        color: #40a9f4
+                &.valid
+                    border-bottom: 1px solid #4CAF50 !important
+                    box-shadow: 0 1px 0 0 #4CAF50 !important
+                &.error
+                    border-bottom: 1px solid red !important
+                    box-shadow: 0 1px 0 0 red
+                /*&:not(.valid)*/
+                    /*border-bottom: 1px solid #4CAF50 !important */
+            margin: 5px 0 10px 0
+            & ~ label
+                font-size: 15px !important
+
+
+        textarea
+            border-radius: 3px
+            border: 1px solid #dddddd
+            margin: 5px 0 10px 0
+            padding-left: 10px
+            &:focus
+                border-bottom: 1px solid #40a9f4 !important
+                box-shadow: 0 1px 0 0 #40a9f4 !important
+                & ~ label
+                    color: #40a9f4 !important
+        .btn
+            background-color: #40a9f4 !important
+.err
+    div
+        color: rgba(255, 0, 0, .7)
+.help_text
+    padding-left: 10px
+    color: rgba(67, 165, 236, 0.77) !important
+.extra
+    p
+        margin: 0
+        color: grey
+.errorlist
+    color: red
+    background-color: rgba(255, 0, 0, 0.1)
+    li
+        padding: 10px
+.social
+    width: 100%
+    margin-bottom: 20px
+    display: flex
+    justify-content: space-around
+    &>div:nth-child(1)
+        margin-top: 5px
+        width: 14%
+        height: 30px
+        border-radius: 3px
+        background-color: #4363c7
+        i
+            margin-top: 5px
+            margin-left: 40%
+            font-size: 20px
+            color: white
+            ma
+    div:nth-child(2)
+        width: 70%
+        input
+            margin: 0
+            height: 2.3rem
+            border: 1px solid rgba(64, 169, 244, 0.28)
+            border-radius: 3px
+            color: gray
+            padding-left: 10px
+            box-sizing: border-box
+    &>div:nth-child(3)
+        .pass-btn
+            div, input[type=submit]
+                margin-top: 10px
+.social.fb
+    &>div:nth-child(1)
+        background-color: #4363c7
+.social.tw
+    &>div:nth-child(1)
+        background-color: #5fe8e4
+.social.in
+    &>div:nth-child(1)
+        background-color: #0089ec
+.social.gp
+    &>div:nth-child(1)
+        background-color: #f74747
+.toggle
+    width: 100%
+    display: flex
+    justify-content: space-around
+    p
+        margin: 0
+        &:first-child
+            font-weight: bold
+    div
+        padding: 10px
+    &>div:nth-child(1)
+        width: 70%
+.change
+    width: 100%
+    margin-bottom: 20px
+    display: flex
+    justify-content: space-around
+    &>div
+        input
+            height: 2rem
+            margin: 0
+            border: 1px solid rgba(64, 169, 244, 0.28)
+            border-radius: 3px
+            padding-left: 10px
+            box-sizing: border-box
+        .pass-btn
+            div, input[type=submit]
+                margin-top: 10px
+    &>div:nth-child(2)
+        width: 70%
+        div:nth-child(2)
+            margin-left: 80%
+.change_extra
+    &>div:nth-child(2)
+        display: flex
+        &>div:nth-child(1)
+            div
+                margin-bottom: 20px
+            margin-bottom: 20px
+            width: 70%
+        &>div:nth-child(2)
+            margin-left: 10%
+        input
+            height: 2rem
+            margin: 0
+            padding-left: 10px
+            border: 1px solid rgba(64, 169, 244, 0.28)
+            border-radius: 3px
+        .pass-btn
+            div
+                margin: 0px 0 10px 62%
+
+
+input:focus
+    border-bottom: 1px solid #40a9f4 !important
+    box-shadow: 0 1px 0 0 #40a9f4 !important
+
+.change_pp
+    background-color: #00c15f !important

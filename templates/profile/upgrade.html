@@ -1,0 +1,178 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block main%}
+  <div class="row main wallet">
+      <div class="col s12 m12 l12">
+          <div class="row bread">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-money"> </span> Upgrade to {{ nxt_level }}</div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col s12 m12 l12 upgrade">
+                <div class="row">
+                    <div class="col s12 m6 l6">
+                        <div class="btcard" data-url="{% url 'profile:upgrade' %}">
+                            <h4> Step 1: Send <span>B{{ amount }}</span> to your Upliner</h4>
+                            <div class="btcard-content">
+                                {% for op in ops  %}
+                                  {% if not op.dsd %}
+                                  <div class="danger">
+                                      <h5>Instructions - Read Carefully</h5>
+                                      <div>
+                                          <p>You must complete the following <strong>2 steps</strong></p>
+                                          <ol>
+                                              <li>Send bitcoin payment tp the wallet listed by the payee</li>
+                                              <li>Provide the transaction hash ID usiung the form below</li>
+                                          </ol>
+                                          <p>This system features automatic payment approval which takes 30-60 minutes.</p>
+                                          <p>Your upgrade will not be in effect until donation in validated and approved by the system.</p>
+                                          <p>All donations are voluntarily and final.Prefund are not available.</p>
+                                          <p>Communication about the upgrade process, donation and approval is between you and the payee only.</p>
+                                          <p><strong>You have 12 hours to upgrade to stage 1 or your account will be deleted.</strong></p>
+                                          <p>If your account expires while your donations for your first upgrade is pending approval your account will not be removed</p>
+                                          <p>All disagreement and problems will not manually handled by system administrator.Submit a <a href="">support ticket</a> to report any issues</p>
+                                          <p>You must read and agree btcGold <a href="">terms of services</a></p>
+                                          <div class="notice">
+                                              <input type="checkbox" id="dsd" name="dsd"/>
+                                                  <label for="dsd">
+                                                    <svg class="checkmark" width="56" height="56">
+                                                      <path d="m25,36 l14,-16"
+                                                            style="stroke-dasharray: 27px;"></path>
+                                                      <path d="m25,36 l-8,-9"
+                                                            style="stroke-dasharray: 11px;"></path>
+                                                    </svg>
+                                                    <svg class="cross" width="56" height="56">
+                                                      <path d="m28,28 l-8,-8"
+                                                            style="stroke-dasharray: 13px;"></path>
+                                                      <path d="m28,28 l8,8"
+                                                            style="stroke-dasharray: 13px;"></path>
+                                                      <path d="m28,28 l-8,8"
+                                                            style="stroke-dasharray: 13px;"></path>
+                                                      <path d="m28,28 l8,-8"
+                                                            style="stroke-dasharray: 13px;"></path>
+                                                    </svg>
+                                                  </label>
+                                              <span>Dont show this again</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  {% endif %}
+                                {% endfor %}
+                                <p class="text-danger">Send exactly <span>B{{ amount}}</span> to the address listed below</p>
+                                <div>
+                                    <div class="live">
+                                      {% if address %} <p>{{ address.newAddr }}</p> {% else %} -- {% endif %}
+                                    </div>
+                                    <div class="qr">
+                                        <img src="{{ address.qrcode.url }}" alt="">
+                                    </div>
+                                    <p>If you are using a wallet application on a mobile device, you can scan this QR codeDevice to send <strong>B{{ amount }}</strong> to <strong>{{ upliner.username }}</strong> .Please make sure to make a note of transaction ID to use at Step 2</p>
+                                </div>
+                            </div>
+                            <h4>Step 2: Submit the payment details</h4>
+                            <div class="btc-content">
+                              {% for op in ops  %}
+                                {% if not op.dsi %}
+                                <div class="live">
+                                    <h5>Where to find transaction hash ID after you made payment?</h5>
+                                    <div>
+                                        <ol>
+                                            <li>Go to https://blockchain.info</li>
+                                            <li>Copy the bitcoin Wallet address you see in Step 1 and paste it in the search box on Blockchain.info then click search</li>
+                                            <li>On the next page, look for Transactions (Oldest First),Just below that you will see a long string of characters.</li>
+                                            <li>Copy the long string of characters and paste it in the Transaction Hash ID field  we provide below</li>
+                                            <li>Click on submit. If you have done it correctly your upgrade will be in effect as soon as our automated system approves the transactions</li>
+                                        </ol>
+                                        <div class="notice">
+                                            <input type="checkbox" id="dsi" name="dsi" />
+                                                <label for="dsi">
+                                                  <svg class="checkmark" width="56" height="56">
+                                                    <path d="m25,36 l14,-16"
+                                                          style="stroke-dasharray: 27px;"></path>
+                                                    <path d="m25,36 l-8,-9"
+                                                          style="stroke-dasharray: 11px;"></path>
+                                                  </svg>
+                                                  <svg class="cross" width="56" height="56">
+                                                    <path d="m28,28 l-8,-8"
+                                                          style="stroke-dasharray: 13px;"></path>
+                                                    <path d="m28,28 l8,8"
+                                                          style="stroke-dasharray: 13px;"></path>
+                                                    <path d="m28,28 l-8,8"
+                                                          style="stroke-dasharray: 13px;"></path>
+                                                    <path d="m28,28 l8,-8"
+                                                          style="stroke-dasharray: 13px;"></path>
+                                                  </svg>
+                                                </label>
+                                            <span> Dont show this again</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                            <p class="medium">Payment Ammout(BTC): B{{ amount }}</p>
+                            <form class="" action="" method="post">{% csrf_token %}
+                              <div class="inp">
+                                  <label for="">Transaction ID</label>
+                                  <input id="transid" name="trid" type="text" placeholder=" Enter the Transaction ID">
+                              </div>
+                              <div class="inp">
+                                  <label for="">Amount Sent</label>
+                                  <input id="amount" name="amnt" type="text" placeholder="  Enter exact amount sent">
+                              </div>
+                              <div class="sub">
+                                  <input class="live-btn" type="submit" value="Submit">
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <div class="btcard">
+                            <h4>Your Upliner</h4>
+                            <div class="btcard-content">
+                                <div class="btcard-img-head">
+                                  <div class="btcard-img">
+                                    <img src="{{ profile.sponsor.info.user_image.url }}" alt="">
+                                  </div>
+                                  <div class="btcard-name">
+                                    <p>{{ upliner.username }}</p>
+                                  </div>
+                                </div>
+                                <div class="table">
+                                    <table>
+                                      <tr>
+                                        <td><span class="fa fa-envelope soc em"></span></td>
+                                        <td>{{ upliner.email }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><span class="fa fa-phone soc tel"></span></td>
+                                        <td>{% if upliner.dashboard.phoneNum %}{{ upliner.dashboard.phoneNum }} {% else %} -- {% endif %}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><span class="fa fa-facebook-square soc fb"></span></td>
+                                        <td>{% if upliner.info.fb_link %}{{ upliner.info.fb_link }}{% else %} -- {% endif %}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><span class="fa fa-twitter-square soc twi"></span></td>
+                                        <td>{% if upliner.info.twi_link %}{{upliner.info.twi_link}}{% else %} -- {% endif %}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><span class="fa fa-linkedin-square soc lin"></span></td>
+                                        <td>{% if upliner.info.lin_link %}{{ upliner.info.lin_link}}{% else %} -- {% endif %}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><span class="fa fa-google-plus-square soc gg"></span></td>
+                                        <td>{% if upliner.info.gm_link %}{{ upliner.info.gm_link}}{% else %} -- {% endif %}</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

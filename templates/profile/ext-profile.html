@@ -1,0 +1,86 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block main%}
+  <div class="row main">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-user"></span>Profile View</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l10">
+              <div class="btcard">
+                <div class="btcard-content">
+                  <div class="p-head">
+                    <div class="big-picture">
+                      <img src="{{ ext.user.info.user_image.url }}" alt="">
+                    </div>
+                    <div class="p-info">
+                      {% if ext.user.name %}
+                        <p>{{ ext.user.name }}</p>
+                      {% else %}
+                        <p>{{ ext.user.username }}</p>
+                      {% endif %}
+                      <p>{{ ext.user.name }}</p>
+                      <p>Level {{ ext.level }}</p>
+                      <p>Joined: {{ ext.date_joined|date:"F jS,  Y" }}</p>
+                    </div>
+                  </div>
+                  <div class="p-content">
+                    <div class="table">
+                        <table>
+                          <tr>
+                            <td><span class="fa fa-envelope soc em"></span></td>
+                            <td>{{ ext.user.email }}</td>
+                          </tr>
+                          <tr>
+                            <td><span class="fa fa-phone soc tel"></span></td>
+                            {% if  ext.phoneNum %}
+                              <td>{{ ext.phoneNum }}</td>
+                            {% else %}
+                              <td>--</td>
+                            {% endif %}
+                          </tr>
+                          <tr>
+                            <td><span class="fa fa-facebook-square soc fb"></span></td>
+                            {% if  ext.user.info.fb_link %}
+                              <td>{{ ext.user.info.fb_link }}</td>
+                            {% else %}
+                              <td>--</td>
+                            {% endif %}
+                          </tr>
+                          <tr>
+                            <td><span class="fa fa-twitter-square soc twi"></span></td>
+                            {% if  ext.user.info.twi_link %}
+                              <td>{{ ext.user.info.twi_link }}</td>
+                            {% else %}
+                              <td>--</td>
+                            {% endif %}
+                          </tr>
+                          <tr>
+                            <td><span class="fa fa-linkedin-square soc lin"></span></td>
+                            {% if  ext.user.info.twi_link %}
+                              <td>{{ ext.user.info.twi_link }}</td>
+                            {% else %}
+                              <td>--</td>
+                            {% endif %}
+                          </tr>
+                          <tr>
+                            <td><span class="fa fa-google-plus-square soc gg"></span></td>
+                            {% if  ext.user.info.gm_link %}
+                              <td>{{ ext.user.info.gm_link }}</td>
+                            {% else %}
+                              <td>--</td>
+                            {% endif %}
+                          </tr>
+                        </table>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  {% endblock %}

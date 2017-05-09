@@ -1,0 +1,37 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% block main%}
+  <div class="row main">
+      <div class="col s12 m12 l12">
+          <div class="row">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-comment"></span>Testimonials</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l10">
+                <div class="btcard testiment">
+                    <h4>Testimonials from our members</h4>
+                    <div class="success_btn"><a href="{% url 'profile:add_test' %}" style="color: white">Add yours</a></div>
+                    <div class="btcard-content">
+                        {% for t in testimony %}
+                          <div class="line">
+                               <div class="img">
+                                  <img id="image" src="{{t.user.info.user_image.url}}" alt="">
+                              </div>
+                              <div class="line-content">
+                                  <strong>{{ t.user.username }}</strong>
+                                  <em>{{ t.timestamp }}</em>
+                                  <div>
+                                      <p>{{t.msg}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endblock %}

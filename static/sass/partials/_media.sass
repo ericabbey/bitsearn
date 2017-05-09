@@ -1,0 +1,139 @@
+@media screen and (min-width: 721px)
+    .hamburger
+        margin: 0px
+        position: relative
+        top: 25px
+        left: 10px
+        div,div:after,div:before
+            width: 24px
+            height: 3px
+            background-color: rgba(255, 255, 255, 0.33)
+            position: absolute
+        div:before
+            content: ''
+            top: -6px
+        div:after
+            content: ''
+            top: 6px
+
+@media screen and (max-width: 768px)
+    .btc-cont
+        display: none
+@media screen and (max-width: 650px)
+    h5
+        font-size: 17px
+        padding-left: 0px !important
+    .line
+        min-height: 170px
+        .img
+            position: relative
+            left: calc(45% - 50px)
+        .line-content
+            width: 90%
+            top: 20px
+            left: 10px
+            &:after
+                border-left: 2px dotted silver
+                border-bottom: none
+                content: ""
+                height: 35px
+                position: absolute
+                left: 48%
+                top: -50%
+
+@media screen and (max-width: 610px)
+    .bread
+        margin-top: 30px
+@media screen and (max-width: 500px)
+    .pp
+        display: none
+    .g
+        margin-left: 0px !important
+    .treehead_detail
+        width: 250px !important
+
+@media screen and (max-width: 600px)
+    .ind-section
+        height: auto
+
+@media screen and (min-width: 720px) and (max-width: 960px)
+    .sidebar
+        width: 200px
+    .sidebar.mid
+        width: 100px
+        nav
+            ul
+                li
+                    .profile-pic
+                        +size(65px)
+                    span
+                        display: none
+                    span.fa
+                        display: inline
+                        font-size: 27px
+                    span.right
+                        font-size: 17px
+            .sidebar-footer
+                width: 100px
+                ul
+                    li
+                        span
+                            font-size: 17px
+    .sidebar.mid + .main
+        width: calc(100% - 100px)
+@media screen and (max-width: 720px)
+    .body
+        display: block
+    .main.wallet
+        top: -700px
+    .main
+        position: relative
+        top: -550px
+    .main.more
+        position: relative
+        top: -500px
+    .row
+        .col
+            padding: 0
+    .sidebar.mob
+        width: 300px
+        left: -300px
+        nav
+            ul
+                li
+                    span
+                        font-size: 17px
+                    span.fa
+                        margin-left: 10px
+                    span:not(.fa)
+                        margin-left: 10px
+            .sidebar-footer
+                width: 300px
+                ul
+                    li
+                        span
+                            font-size: 17px
+    .sidebar.mob.active
+        left: 0
+        z-index: 100
+        height: 100%
+    .body.active
+        height: 150vh
+        overflow: hidden
+    .sidebar.mob + .main
+        width: calc(100%)
+    .table
+        overflow: hidden
+    .btcard
+        .btcard-content
+            .btcard-img-head
+                width: 60%
+                .btcard-name
+                    p,a>div
+                        margin-left: 20px
+@media screen and (min-width: 720px)
+    .ham:not(.static)
+        display: none
+@media screen and (min-width: 993px)
+    .static.ham
+        display: none

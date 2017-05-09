@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>BitsGold</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static '/font/font-awesome-4.4.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="nav">
+
+  <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo logo"><span class="fa fa-btc">itsearn</span></a>
+          <a href="#" data-activates="mobile-demo" class="ham static mobile" ><div></div></a>
+          <ul class="right nav hide-on-med-and-down">
+            <li class="active"><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'hiw' %}">How it Works</a></li>
+            <li><a href="{% url 'terms' %}">Terms</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li class="active"><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'hiw' %}">How it Works</a></li>
+            <li><a href="{% url 'terms' %}">Terms</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="body static">
+      <div class="row">
+          <div class="col s12 m12 l10 offset-l1">
+            <div class="btc-cont">
+                <span class="fa fa-btc btc ex-big"></span>
+                <span class="fa fa-btc btc med-big top-200"></span>
+                <span class="fa fa-btc btc small top-120" ></span>
+                <span class="fa fa-btc btc"></span>
+                <span class="fa fa-btc btc ex-small top-80"></span>
+                <span class="fa fa-btc btc ex-big turn-90 top-190"></span>
+                <span class="fa fa-btc btc small turn-60"></span>
+                <span class="fa fa-btc btc med-big top-100 turn-180 left-200"></span>
+                <span class="fa fa-btc btc big top-20"></span>
+                <span class="fa fa-btc btc small left-100 top-120 turn-60 "></span>
+            </div>
+              <div class="home-info">
+                  <p>This communities focus is to make a difference in this world.Giving people real chance to achieve their goals. Easy start just follow along.</p>
+              </div>
+              <div class="row ind-section">
+                <div class="col s12 m6 l5 offset-l1 home-reg naranja">
+                    <p class="fa fa-edit home-icon"></p>
+                    <p class="home-text">Create account and login</p>
+                </div>
+                <div class="col s12 m6 l5 ind-section-sub">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque accusantium</p>
+                </div>
+              </div>
+              <div class="row ind-section">
+                <div class="col s12 m6 l5 offset-l1 ind-section-sub">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque accusantium</p>
+                </div>
+                <div class="col s12 m6 l5  home-reg berday">
+                    <p class="fa fa-external-link home-icon"></p>
+                    <p class="home-text">Upgrade your account</p>
+                </div>
+              </div>
+              <div class="row ind-section">
+                <div class="col s12 m6 l5 offset-l1 home-reg azul">
+                    <p class="fa fa-users home-icon"></p>
+                    <p class="home-text">Refer 3 people</p>
+                </div>
+                <div class="col s12 m6 l5 offset-l1 ind-section-sub">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque accusantium</p>
+                </div>
+              </div>
+              <div class="row ind-section">
+                <div class="col s12 m6 l5 offset-l1 ind-section-sub">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque accusantium</p>
+                </div>
+                <div class="col s12 m6 l5 home-reg amarillo">
+                    <p class="fa fa-btc home-icon"></p>
+                    <p class="home-text">Start earning </p>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="row stats__cont">
+        <div class="col s12 m12 l8 offset-l2  stats">
+          <h5>over</h5>
+          <h3>10267</h3>
+          <h6>members</h6>
+        </div>
+        <div class="stats__cont__overlay"></div>
+      </div>
+      <div class="row footer">
+        <div class="col s12 m12 l8 offset-l2 footer__cont "><p>All rights reserved Bitsearn &copy; 2017</p></div>
+      </div>
+</body>
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+</html>

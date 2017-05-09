@@ -1,0 +1,156 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load query %}
+{% block main%}
+  <div class="row main wallet">
+      <div class="col s12 m12 l12">
+          <div class="row bread">
+            <div class="col s12 m12 l12 breadcrumbs">
+              <div><span class="fa fa-line-chart"> </span> Donation Statistics</div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col s12">
+                <ul class="tabs">
+                  <li class="tab col s3"><a class="active" href="#test1">Pending</a></li>
+                  <li class="tab col s3"><a href="#test2">Completed</a></li>
+                  <li class="tab col s3 "><a href="#test3">Missed</a></li>
+                </ul>
+              </div>
+              <div id="test1" class="col s12">
+                  <div class="btcard">
+                      <h4>Donations pending approval</h4>
+                      <div class="btcard-content">
+                          <div class="table">
+                              <div class="search-input col s12 m12 l9">
+                                  <input type="text" id="serach" placeholder="who do you want?">
+                                  <label for="search"><span class="fa fa-search"></span></label>
+                              </div>
+                              <table>
+                                  <tr>
+                                      <th>From</th>
+                                      <th>To</th>
+                                      <th>Time sent</th>
+                                      <th>Trans ID</th>
+                                  </tr>
+                                  {% for p in pending %}
+                                  <tr>
+                                    {% if p.user == request.user %}
+                                      <td>You</td>
+                                    {% else %}
+                                      <td><a href="{% url 'profile:ext' name=p.user.username%}">{{ p.user.username}}</a></td>
+                                    {% endif %}
+
+                                    {% if p.to == request.user %}
+                                      <td>You</td>
+                                    {% else %}
+                                      <td><a href="">{{ p.to.username}}</a></td>
+                                    {% endif %}
+
+                                      <td>{{ p.timestamp}}</td>
+                                      <td class="long-text">{{ p.trans_id|truncatechars:25}}</td>
+                                  </tr>
+                                  {% endfor %}
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="test2" class="col s12">
+                 <div class="btcard">
+                      <h4>Donations Sent</h4>
+                      <div class="btcard-content">
+                          <div class="table">
+                              <div class="search-input col s12 m12 l9">
+                                  <input type="text" id="serach" placeholder="who do you want?">
+                                  <label for="search"><span class="fa fa-search"></span></label>
+                              </div>
+                              <table>
+                                  <tr>
+                                      <th>Level</th>
+                                      <th>To Member</th>
+                                      <th>Date</th>
+                                      <th>Transaction ID</th>
+                                      <th>Amount</th>
+                                  </tr>
+                                  {% query trans user=request.user state="confirmed" as confirms_s %}
+                                  {% for c in confirms_s  %}
+                                  <tr>
+                                      <td>{{ c.to.dashboard.level }}</td>
+                                      <td>{{ c.to }}</td>
+                                      <td>{{ c.timestamp }}</td>
+                                      <td>{{ c.trans_id}}</td>
+                                      <td>B{{c.amount}}</td>
+                                  </tr>
+                                  {% endfor %}
+                              </table>
+                          </div>
+                      </div>
+                </div>
+                <div class="btcard" style="margin-top: 30px">
+                      <h4>Donations Received</h4>
+                      <div class="btcard-content">
+                          <div class="table">
+                              <div class="search-input col s12 m12 l9">
+                                  <input type="text" id="serach" placeholder="who do you want?">
+                                  <label for="search"><span class="fa fa-search"></span></label>
+                              </div>
+                              <table>
+                                  <tr>
+                                    <th>From Member</th>
+                                    <th>Level</th>
+                                    <th>Date</th>
+                                    <th>Transaction ID</th>
+                                    <th>Amount</th>
+                                  </tr>
+                                  {% query trans to=request.user state="confirmed" as confirms_r %}
+                                  {% for c in confirms_r  %}
+                                  <tr>
+                                      <td><a href="{% url 'profile:ext' name=c.user.username%}">{{ c.user.username }}</a></td>
+                                      <td>{{ c.user.dashboard.level }}</td>
+                                      <td>{{ c.timestamp }}</td>
+                                      <td>{{ c.trans_id|truncatechars:25}}</td>
+                                      <td>{{ c.amount }}</td>
+                                  </tr>
+                                  {% endfor %}
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              <div id="test3" class="col s12">
+                 <div class="btcard">
+                      <h4>Missed donatons</h4>
+                      <div class="btcard-content">
+                        <div class="info">
+                          <p>No donations are missed your are a pro</p>
+                        </div>
+                          <div class="table">
+                              <div class="search-input col s12 m12 l9">
+                                  <input type="text" id="serach" placeholder="who do you want?">
+                                  <label for="search"><span class="fa fa-search"></span></label>
+                              </div>
+                              <table>
+                                  <tr>
+                                      <th>From</th>
+                                      <th>Went To</th>
+                                      <th>Time sent</th>
+                                      <th>Sponsor</th>
+                                  </tr>
+                                  {% for m in missed %}
+                                  <tr>
+                                      <td><a href="">{{ m.user }}</a></td>
+                                      <td>{{ m.missed_to }}</td>
+                                      <td>{{ m.timestamp }}</td>
+                                      <td><a href="">Ray Nana</a></td>
+                                  </tr>
+                                  {% endfor %}
+                              </table>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
